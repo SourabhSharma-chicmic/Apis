@@ -27,7 +27,10 @@ const AddData = () => {
     
     //post Called
     dispatch(PostData(obj));
-    
+    // after 2 seconds fetch from updated database
+    setTimeout(() => {
+      dispatch(GetData());
+    }, 2000); 
   };
 
   return (
