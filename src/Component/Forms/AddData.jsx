@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { PostData } from "../../Redux/Actions/Index";
 
 const initialValues = {
   name: "",
@@ -6,28 +8,12 @@ const initialValues = {
 };
 
 const AddData = () => {
+  const dispatch = useDispatch();
   const [formValues, setFormValues] = useState(initialValues);
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
-  };
-
-  const PostData = async (obj) => {
-    try {
-      const url = "https://61922ce9aeab5c0017105e0c.mockapi.io/UserData";
-      const resolve = await fetch(url, {
-        method: "POST",
-        body: JSON.stringify(obj),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const response = await resolve.json();
-      console.log(response)
-    } catch (err) {
-      console.log("Outside Catch Error", err);
-    }
   };
 
   const onSubmitHandler = (e) => {
@@ -36,8 +22,9 @@ const AddData = () => {
       id: Math.random().toString(),
       ...formValues,
     };
-    PostData(obj);
-    console.log(obj);
+    const payload = obj;
+    
+    dispatch(PostData(obj));
   };
 
   return (
