@@ -16,7 +16,6 @@ const ShowUser = (props) => {
         <button
           onClick={onDeleteHandler}
           type="button"
-          
           className="btn btn-danger btn-md me-3 "
         >
           Delete
