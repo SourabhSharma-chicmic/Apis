@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { PostData } from "../../Redux/Actions/Index";
+import { PostData , GetData} from "../../Redux/Actions/Index";
 
 const initialValues = {
   name: "",
@@ -17,6 +17,7 @@ const AddData = () => {
   };
 
   const onSubmitHandler = (e) => {
+    
     e.preventDefault();
     const obj = {
       id: Math.random().toString(),
@@ -24,7 +25,10 @@ const AddData = () => {
     };
     const payload = obj;
     
+    //post Called
     dispatch(PostData(obj));
+    //get called
+    dispatch(GetData());
   };
 
   return (
