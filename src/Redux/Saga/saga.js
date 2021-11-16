@@ -7,17 +7,15 @@ function* postData({ payload }) {
     const response = yield fetch(url, {
       method: "POST",
       body: JSON.stringify(payload),
-      headers: {"Content-Type": "application/json"}
+      headers: { "Content-Type": "application/json" },
     });
 
-    
-    if (response.status == 201 || 200 ) {
-      
+    if (response.status == 201 || 200) {
       const result = yield response.json();
-      console.log("result" ,response.statusText)
-      alert("Succesfullly Submitted...!" );
+      console.log("result", response.statusText);
+      alert("Succesfullly Submitted...!");
     } else {
-        alert("Errror is ", response.statusText);
+      alert("Errror is ", response.statusText);
     }
   } catch (err) {
     console.log("Outside Catch Error", err);
