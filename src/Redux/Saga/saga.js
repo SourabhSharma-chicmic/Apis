@@ -2,7 +2,7 @@ import { takeEvery, put, takeLatest ,all } from "redux-saga/effects";
 
 function* handleApi({type, payload }) {
   try {
-    console.log(payload, "payload");
+    
     const url =  "https://61922ce9aeab5c0017105e0c.mockapi.io/UserData";
     const response = yield fetch(url , type=="POST_DATA" ?
          {
