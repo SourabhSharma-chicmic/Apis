@@ -10,3 +10,10 @@ export const GetData = () => {
     type: "GET_DATA"
   };
 };
+
+export const DeleteData = (id) => {
+  return {
+    type: "DELETE_DATA",
+    payload: id
+  };
+};
