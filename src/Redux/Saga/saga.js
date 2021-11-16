@@ -22,7 +22,8 @@ function* handleApi({type, payload }) {
       }
       else
       {
-         console.log("Get REques" ,result);
+          
+       yield  put({type:"SAVE_USERS", payload: result})
       }
     } else {
       alert("Errror is ", response.statusText);
