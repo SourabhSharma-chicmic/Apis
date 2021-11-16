@@ -1,18 +1,21 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { GetData } from "../../Redux/Actions/Index";
+import { DeleteData, GetData } from "../../Redux/Actions/Index";
 import ShowUser from "./ShowUser";
 
 const ShowUsersData = () => {
   const dispatch = useDispatch();
   const Users = useSelector((state) => state.SaveUser.Users);
-  console.log(Users);
+
   useEffect(() => {
     dispatch(GetData());
   }, []);
 
   const DeleteHandler = (id) => {
-      console.log("Delete",id);
+      dispatch(DeleteData(id));
+      setTimeout(() => {
+        dispatch(GetData());
+      }, 1000);
   };
 
   const UpdateHandler = (id) => {
