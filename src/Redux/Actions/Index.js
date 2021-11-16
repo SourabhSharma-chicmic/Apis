@@ -7,6 +7,6 @@ export const PostData = (userData) => {
 
 export const GetData = () => {
   return {
-    type: "GET_DATA",
+    type: "GET_DATA"
   };
 };

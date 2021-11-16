@@ -27,8 +27,7 @@ const AddData = () => {
     
     //post Called
     dispatch(PostData(obj));
-    //get called
-    dispatch(GetData());
+    
   };
 
   return (
