@@ -24,3 +24,10 @@ export const PutData = (obj) => {
     payload: obj
   };
 };
+
+export const LoginUser = (obj) => {
+  return {
+    type: "LOGIN",
+    payload: obj
+  };
+};

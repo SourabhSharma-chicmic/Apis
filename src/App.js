@@ -5,6 +5,7 @@ import ShowUsersData from "./Component/View/ShowUsersData";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./Component/Menu/Navbar";
 import UpdateForm from "./Component/Forms/UpdateForm";
+import LoginForm from "./Authentication/LoginForm";
 const App = () => {
   return (
     <div className="container-fluid"> 
@@ -12,6 +13,9 @@ const App = () => {
       
            <Switch>
              <Route exact path="/">
+                 <LoginForm/>
+              </Route>
+              <Route exact path="/adduser">
                  <AddData />
               </Route>
               <Route path="/display">

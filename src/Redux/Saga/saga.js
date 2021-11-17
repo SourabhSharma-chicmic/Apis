@@ -25,12 +25,12 @@ function* handleApi({ type, payload }) {
         ? { method: "DELETE", headers: { "Content-Type": "application/json" } }
         : {
             method: "PUT",
-            body: JSON.stringify({name :payload.name,email :payload.email}),
+            body: JSON.stringify({ name: payload.name, email: payload.email }),
             headers: { "Content-Type": "application/json" },
           }
     );
 
-    if (response.status == 201 || 200) {
+    if (response.status == 201 ||response.status ==  200) {
       const result = yield response.json();
 
       if (type == "POST_DATA") {
@@ -41,7 +41,6 @@ function* handleApi({ type, payload }) {
         alert("Delted Succedfully..!!");
       } else {
         alert("Updated Succesful..!!");
-        
       }
     } else {
       alert("Errror is ", response.statusText);
@@ -51,6 +50,30 @@ function* handleApi({ type, payload }) {
   }
 }
 
+function* Login({ type, payload }) {
+  const { name, email } = payload;
+  console.log("inseide saga " ,payload)
+  let url = `https://61922ce9aeab5c0017105e0c.mockapi.io/UserData/${email}`;
+  try {
+    const result = yield fetch(url, {
+      method: "GET",
+     
+    });
+
+    if(result.status == 201 ||result.status ==  200)
+    {
+      const finalData = yield result.json();
+      console.log(finalData);
+
+    }else{
+      alert("Email or Name doestn match")
+      console.log("Data is", result.statusText)
+    }
+    
+  } catch (err) {
+    console.log("Error Outside Cathc", err);
+  }
+}
 export function* watchPostData() {
   //yield all([ all take lateste hits here ]) //this is for multiple hits for singles
   // simple yeild takelates("POST_DATA", fnToCalss)
@@ -59,5 +82,6 @@ export function* watchPostData() {
     takeLatest("GET_DATA", handleApi),
     takeLatest("DELETE_DATA", handleApi),
     takeLatest("PUT_DATA", handleApi),
+    takeLatest("LOGIN", Login),
   ]);
 }
