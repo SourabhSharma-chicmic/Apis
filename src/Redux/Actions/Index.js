@@ -17,3 +17,10 @@ export const DeleteData = (id) => {
     payload: id
   };
 };
+
+export const PutData = (id) => {
+  return {
+    type: "PUT_DATA",
+    payload: id
+  };
+};

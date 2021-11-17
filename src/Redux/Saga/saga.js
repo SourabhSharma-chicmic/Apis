@@ -3,7 +3,7 @@ import { takeEvery, put, takeLatest, all } from "redux-saga/effects";
 function* handleApi({ type, payload }) {
   let url;
   try {
-    if (type == "DELETE_DATA")
+    if (type == "DELETE_DATA" || "PUT_DATA")
     {
       url = `https://61922ce9aeab5c0017105e0c.mockapi.io/UserData/${payload}`;
     }
@@ -14,17 +14,11 @@ function* handleApi({ type, payload }) {
     const response = yield fetch(
       url,
       type == "POST_DATA"
-        ? {
-            method: "POST",
-            body: JSON.stringify(payload),
-            headers: { "Content-Type": "application/json" },
-          }
+        ? {method: "POST",body: JSON.stringify(payload),headers: { "Content-Type": "application/json" }}
         : type == "GET_DATA"
         ? { method: "GET" }
-        : {
-            method: "DELETE",
-            headers: { "Content-Type": "application/json" },
-          }
+        : type=="DELETE_DATA" ?{ method: "DELETE",headers: { "Content-Type": "application/json" }}
+        : {method : "PUT" ,body:JSON.stringify(payload), headers:{"Content-Type" :"application/json"}}
     );
 
     if (response.status == 201 || 200) {
@@ -32,15 +26,17 @@ function* handleApi({ type, payload }) {
 
           if (type == "POST_DATA")
           {
-
             alert("Succesfullly Submitted...!", response.statusText);
           } 
           else if (type == "GET_DATA") {
             yield put({ type: "SAVE_USERS", payload: result });
           }
-          else
+          else if(type=="DELETE_DATA")
           {
-            alert("Delted Succedfully");  
+            alert("Delted Succedfully..!!");  
+          }else{
+
+            alert("Updated Succesful..!!");
           }
     }
     else 
@@ -60,5 +56,6 @@ export function* watchPostData() {
     takeLatest("POST_DATA", handleApi),
     takeLatest("GET_DATA", handleApi),
     takeLatest("DELETE_DATA", handleApi),
+    takeLatest("PUT_DATA", handleApi)
   ]);
 }

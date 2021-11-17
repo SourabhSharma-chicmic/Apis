@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { DeleteData, GetData } from "../../Redux/Actions/Index";
+import { DeleteData, GetData ,PutData } from "../../Redux/Actions/Index";
 import ShowUser from "./ShowUser";
 
 const ShowUsersData = () => {
@@ -19,7 +19,7 @@ const ShowUsersData = () => {
   };
 
   const UpdateHandler = (id) => {
-      console.log("Update",id);
+    dispatch(PutData(id));
   };
   return (
     <div className="row">
