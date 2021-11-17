@@ -6,7 +6,7 @@ const ShowUser = (props) => {
     props.getUpdateId(props.id);
   };
   return (
-    <div className=" card col-md-4 mb-5 mt-1">
+    <div className=" card col-md-4 offset-4 mb-5 mt-3 text-center">
       <div className="card-header">
         {props.email}
         <br />
@@ -16,14 +16,14 @@ const ShowUser = (props) => {
         <button
           onClick={onDeleteHandler}
           type="button"
-          className="btn btn-danger btn-md me-3 "
+          className="btn btn-dark btn-md me-3 "
         >
           Delete
         </button>
         <button
           onClick={onUpdateHandler}
           type="button"
-          className="btn btn-danger btn-md"
+          className="btn btn-success btn-md"
         >
           Update
         </button>

@@ -18,9 +18,9 @@ export const DeleteData = (id) => {
   };
 };
 
-export const PutData = (id) => {
+export const PutData = (obj) => {
   return {
     type: "PUT_DATA",
-    payload: id
+    payload: obj
   };
 };
