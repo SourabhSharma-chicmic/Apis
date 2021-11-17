@@ -1,13 +1,30 @@
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
+import "../node_modules/bootstrap/dist/js/bootstrap.js"
 import AddData from "./Component/Forms/AddData";
 import ShowUsersData from "./Component/View/ShowUsersData";
-
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Navbar from "./Component/Menu/Navbar";
+import UpdateForm from "./Component/Forms/UpdateForm";
 const App = () => {
   return (
-    <div className="container">
-      <AddData />
-      <ShowUsersData />
+    <div className="container-fluid"> 
+    <Navbar/>
+      
+           <Switch>
+             <Route exact path="/">
+                 <AddData />
+              </Route>
+              <Route path="/display">
+                
+                 <ShowUsersData />
+              </Route>
+              <Route path="/update/:id" component={UpdateForm}/>
+                
+              <Route path="*">
+                 <AddData/>
+              </Route>
+          </Switch>
+      
     </div>
   );
 };
