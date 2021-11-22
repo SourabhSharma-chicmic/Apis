@@ -3,7 +3,7 @@ import { useState } from "react";
 const UpperText = () => {
   const [text, setText] = useState("");
   const [preview, setPreview] = useState(false);
-
+  const [darkmode, setDarkMode] = useState(false);
   const onChangeHandler = (e) => {
     setText(e.target.value);
   };
@@ -19,13 +19,17 @@ const UpperText = () => {
 
   const setPreviewHandler = () => {
     setPreview(!preview);
-    if(!preview){
-    document.body.style.backgroundColor ='black'}else{
-        document.body.style.backgroundColor ='white'  
+  };
+  const setModeHandler = () => {
+    setDarkMode(!darkmode);
+    if (!darkmode) {
+      document.body.style.backgroundColor = "black";
+    } else {
+      document.body.style.backgroundColor = "white";
     }
   };
   return (
-    <div className={`container ${preview ?"bg-dark text-white" :""}`}>
+    <div className={`container ${darkmode ? "bg-dark text-white" : ""}`}>
       <h1 className="text-primary my-3">Enter text for changing case !</h1>
       <div class="mb-3">
         <textarea
@@ -44,25 +48,42 @@ const UpperText = () => {
       <button className="btn btn-primary ms-3" onClick={ResetHandler}>
         Reset
       </button>
-      <button disabled="true" className="btn btn-primary ms-3" onClick={setPreviewHandler}>
+      <button className="btn btn-primary ms-3" onClick={setPreviewHandler}>
         Preview
       </button>
 
-      <button className="btn btn-primary ms-3" onClick={setPreviewHandler}>
-        {preview?"Default Mode":"DarkMode"}
-      </button>
+      
+
+      <div class="form-check form-switch my-3 ms-3">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          role="switch"
+          id="flexSwitchCheckDefault"
+          onClick={setModeHandler}
+        />
+        <label class="form-check-label" for="flexSwitchCheckDefault">
+        {darkmode ? "disable Darkmode" : "enable Darkmode"}
+        </label>
+      </div>
+
       <p className="text text-center">
         Number of words are
         <i className=" fw-bold text-primary"> {text.split(" ").length} </i> and
         number of characters are
         <i className=" fw-bold text-primary">{text.trim().length}</i>
       </p>
-      
-      {/* {preview && (
+
+      {preview && (
         <div className="row">
-          <div style={{textAlign:'justify'}} className="col-md-8 offset-2  border border- table-bordered opacity-75 ">{text}</div>
+          <div
+            style={{ textAlign: "justify" }}
+            className="col-md-8 offset-2  border border- table-bordered opacity-75 "
+          >
+            {text}
+          </div>
         </div>
-      )} */}
+      )}
     </div>
   );
 };
