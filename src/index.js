@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter as BrowserRouter} from "react-router-dom";
 import App from './App';
+import UpperText from './Component/Forms/UpperText';
 import Store from './Redux/Store';
 
 
@@ -10,7 +11,8 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={Store}>
       <BrowserRouter>
-    <App />
+    {/* <App /> */}
+    <UpperText/>
     </BrowserRouter>
     </Provider>
   </React.StrictMode>,

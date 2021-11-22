@@ -37,7 +37,7 @@ const AddData = () => {
     <>
       <div className="row ">
         <div className="col-md-6 offset-1 mt-5 border border-2  border-dark">
-        <h2 className="bg-danger col-4 offset-4 mt-5 text-capitalize text-center p-2">List of Users</h2>
+        <h2 className="bg-danger col-4 offset-4 mt-5 text-capitalize text-center p-2">Add Users</h2>
 
           
           <form onSubmit={onSubmitHandler}>
