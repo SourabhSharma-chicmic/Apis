@@ -33,7 +33,7 @@ const UpperText = () => {
 
       <button className="btn btn-primary me-4" onClick={UperCaseHandler}>Change to UpperCase</button> 
       <button className="btn btn-primary ms-3" onClick={ResetHandler}>Reset</button>
-     <p className="text text-center">Number of words are <i className=" fw-bold text-primary"> {text.split(" ").length-1} </i> and number of characters are <i className=" fw-bold text-primary">{text.trim().length}</i></p>
+     <p className="text text-center">Number of words are <i className=" fw-bold text-primary"> {text.split(" ").length} </i> and number of characters are <i className=" fw-bold text-primary">{text.trim().length}</i></p>
     </div>
   );
 };
