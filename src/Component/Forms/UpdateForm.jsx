@@ -4,6 +4,7 @@ import chalk from "jest-matcher-utils/node_modules/chalk";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { PutData } from "../../Redux/Actions/Index";
+import PropTypes from 'prop-types'
 
 const UpdateForm = (props) => {
   //getting latest data from store using useSelector
@@ -76,4 +77,7 @@ const UpdateForm = (props) => {
   );
 };
 
+// UpdateForm.PropTypes ={
+//   id :PropTypes.string
+// }
 export default UpdateForm;
